@@ -12,6 +12,7 @@ app.use(express.json())
 app.use('/users', userRouter)
 app.use('/login', loginRouter)
 app.use('/contacts', contactsRouter)
+app.use('/docs', express.static(__dirname + '/docs'))
 
 app.use(errorHandler)
 export default app
