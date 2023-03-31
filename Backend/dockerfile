@@ -1,0 +1,15 @@
+FROM node:alpine AS builder
+RUN npm install --global yarn
+WORKDIR /app
+COPY package.json .
+RUN yarn install
+COPY . .
+EXPOSE 3000
+RUN yarn build
+
+#Preencha abaixo com os valores desejados para as variáveis de ambiente.
+RUN echo "MONGO_URL=[URL DA SUA DB AQUI]"
+RUN echo "SECRET_KEY=[SUA SECRET KEY AQUI]"
+RUN echo "PORT=[PORTA AQUI]"
+
+CMD ["yarn", "start"]

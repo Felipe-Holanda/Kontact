@@ -1,5 +1,5 @@
 {
-  "name": "Kontact-API",
+  "name": "kontact-api",
   "version": "1.0.0",
   "description": "API for a cloud contact storage and easy management.",
   "main": "src/server.ts",
@@ -9,15 +9,28 @@
   "private": false,
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.3",
-    "uuid": "^9.0.0",
     "yup": "^1.0.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.0",
+    "@types/supertest": "^2.0.12",
+    "cross-env": "^7.0.3",
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.0.5",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "cross-env NODE_ENV=test jest --forceExit --detectOpenHandles --verbose"
   }
 }
