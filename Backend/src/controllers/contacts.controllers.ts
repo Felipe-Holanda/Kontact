@@ -3,6 +3,7 @@ import createContactService from '../services/contacts/createContact.service'
 import updateContactService from '../services/contacts/updateContact.service'
 import deleteContactService from '../services/contacts/deleteContact.service'
 import listContactsService from '../services/contacts/listContacts.service'
+import readContactService from '../services/contacts/readContact.service'
 
 export async function createContact(req: Request, res: Response): Promise<Response> {
     const { id } = req.body.user
@@ -27,4 +28,9 @@ export async function updateContact(req: Request, res: Response): Promise<Respon
 export async function deleteContact(req: Request, res: Response): Promise<Response> {
     await deleteContactService(req.params.id)
     return res.status(204).send()
+}
+
+export async function readContact(req: Request, res: Response): Promise<Response> {
+    const contact = await readContactService(req.params.id)
+    return res.status(200).json(contact)
 }

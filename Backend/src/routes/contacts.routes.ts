@@ -12,13 +12,14 @@ import verifyNumber from '../middlewares/contacts/verifyNumber.middleware'
 import checkPrivileges from '../middlewares/contacts/checkPrivileges.middleware'
 
 //Controllers
-import { createContact, listContacts, updateContact, deleteContact } from '../controllers/contacts.controllers'
+import { createContact, listContacts, updateContact, deleteContact, readContact } from '../controllers/contacts.controllers'
 const contactsRouter = Router()
 
 contactsRouter.get('', checkToken, listContacts)
 contactsRouter.post('', shapeVerify(registerSchema), checkToken, createContact)
 contactsRouter.patch('/:id', shapeVerify(updateSchema), checkToken, idVerify, checkPrivileges, updateContact)
 contactsRouter.delete('/:id', checkToken, idVerify, checkPrivileges, deleteContact)
+contactsRouter.get('/:id', checkToken, idVerify, checkPrivileges, readContact)
 
 
 export default contactsRouter
