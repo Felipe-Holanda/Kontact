@@ -5,9 +5,12 @@ import errorHandler from './errors/ErrorHandler.middleware'
 import userRouter from './routes/user.routes'
 import loginRouter from './routes/login.routes'
 import contactsRouter from './routes/contacts.routes'
+//Allowance from CORS
+import cors from 'cors'
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.use('/users', userRouter)
 app.use('/login', loginRouter)
